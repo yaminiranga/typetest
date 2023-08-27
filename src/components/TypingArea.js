@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-export const TypingArea = () => {
+export const TypingArea = (props) => {
 
-    const textString = 'Type here you lil shee!!\n'.split('')
+    const onFocus = props.onFocus
+    const setIsTyping = props.setIsTyping
+    const textString = 'Type here you lil shee!!\0'.split('')
     const initIndex = 0
     const initState = textString.map((c, i) => ({ color: 'black', letter: c, index: i }))
     const [content, setContent] = useState(initState);
@@ -18,8 +20,12 @@ export const TypingArea = () => {
             return newArray;
         });
     };
+
     let color = 'green'
     const validKeys = new Set([...Array(26).keys()].map(i => String.fromCharCode(i + 65)).concat(" ", "!", ".", ",").concat([...Array(26).keys()].map(i => String.fromCharCode(i + 97))));
+
+
+
 
     const handleKeyDown = event => {
         if (isEditable) {
@@ -41,22 +47,24 @@ export const TypingArea = () => {
                     //     event.preventDefault()
                 }
             }
+            setIsTyping(true)
 
+            if (index == textString.length - 2) {
+                setIsTyping(false)
+            }
         }
     };
+    const [isEditable, setIsEditable] = useState(false)
     const spanRef = useRef(null)
 
-    const focusText = () => {
-        spanRef.current.focus()
-    }
+    useEffect(() => {
+        setIsEditable(onFocus);
+        focusText();
+    }, [onFocus]);
 
-    const [isEditable, setIsEditable] = useState(false)
-    const [isButton, setIsButton] = useState(false)
-    const toggleButton = () => {
-        setIsButton(prev => !prev)
-        setIsEditable(!isButton)
-        focusText()
-    }
+    const focusText = () => {
+        spanRef.current.focus();
+    };
     return (<>
         <span
             tabIndex={0}
@@ -66,7 +74,6 @@ export const TypingArea = () => {
             {content.map((s, i) => { return <span style={{ color: s.color }} key={i} >{s.letter}</span> })
             }
         </span >
-        <button onClick={toggleButton}>{isButton ? 'Stop' : 'Start'}</button>
 
     </>
     );

@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const StartButton = () => {
+export const StartButton = (props) => {
+    const toggleButton = props.toggle
+    const isButton = props.startbtn
     return (
         <>
-            <button>Start</button>
+            <button onClick={toggleButton}>{isButton ? 'Stop' : 'Start'}</button>
         </>
     )
 }
