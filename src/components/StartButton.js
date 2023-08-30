@@ -14,11 +14,8 @@ export const StartButton = (props) => {
             btnColor: isButton ? 'error' : 'primary',
             btnText: isButton ? 'Stop' : 'Start',
             btnType: isButton ? <PauseIcon /> : <PlayArrowIcon />
-
-
         })
-    }, [btnAttributes])
-
+    }, [props.isStartBtn])
     return (
         //<Stack spacing={2} direction={'row'} alignContent={'center'}>
         <Button
@@ -27,7 +24,8 @@ export const StartButton = (props) => {
             endIcon={btnAttributes.btnType}
             size='small'
             color={btnAttributes.btnColor}
-            onClick={toggleButton} >
+            onClick={toggleButton}
+        >
             {btnAttributes.btnText}
         </Button>
         // </Stack>
