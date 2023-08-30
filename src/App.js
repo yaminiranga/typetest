@@ -6,6 +6,7 @@ import TypingTest from './components/Typetest';
 import { StartButton } from './components/StartButton';
 import { Timer } from './components/Timer';
 import { useState } from 'react';
+import { Stack } from '@mui/material'
 
 
 
@@ -21,8 +22,10 @@ function App() {
     <div className="App">
       <NavBar></NavBar>
       <Timer isStart={isType && startbtn} ></Timer>
-      <TypingArea onFocus={startbtn} setIsTyping={setIsType}></TypingArea>
-      <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
+      <Stack spacing={2} direction={'row'} justifyContent={'center'}>
+        <TypingArea onFocus={startbtn} setIsTyping={setIsType}></TypingArea>
+        <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
+      </Stack>
     </div >
   );
 }

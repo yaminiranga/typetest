@@ -18,10 +18,10 @@ export const Timer = (props) => {
         return () => clearInterval(interval)
     })
 
-    const resetButton = () => {
-        setMinutes(0)
-        setSeconds(0)
-    }
+    // const resetButton = () => {
+    //     setMinutes(0)
+    //     setSeconds(0)
+    // }
 
     return (
         <div>Timer
