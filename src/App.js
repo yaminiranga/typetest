@@ -6,7 +6,8 @@ import TypingTest from './components/Typetest';
 import { StartButton } from './components/StartButton';
 import { Timer } from './components/Timer';
 import { useState } from 'react';
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
+import { Footer } from './components/Footer';
 
 
 
@@ -19,13 +20,15 @@ function App() {
 
   const [isType, setIsType] = useState(false)
   return (
-    <div className="App">
+    <div className="App" style={{ marginBottom: '200px' }} >
       <NavBar></NavBar>
       <Timer isStart={isType && startbtn} ></Timer>
       <Stack spacing={2} direction={'row'} justifyContent={'center'}>
         <TypingArea onFocus={startbtn} setIsTyping={setIsType}></TypingArea>
         <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
       </Stack>
+      <Footer></Footer>
+
     </div >
   );
 }

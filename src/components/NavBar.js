@@ -65,10 +65,12 @@ export const NavBar = () => {
                     </Stack >
                 </Hidden>
 
-                <Hidden smUp>
-                    <IconButton onClick={() => setDrawerOpen(true)}>
-                        <MenuIcon />
-                    </IconButton>
+                <Hidden smUp >
+                    {!drawerOpen &&
+                        (<IconButton onClick={() => setDrawerOpen(true)} >
+                            <MenuIcon />
+                        </IconButton>
+                        )}
                 </Hidden>
             </Toolbar>
             <SwipeableDrawer
@@ -91,16 +93,22 @@ export const NavBar = () => {
                         href={linkedinLink}>
                         <LinkedInIcon />
                     </IconButton>
+                    <Divider />
+
                     <IconButton
                         color='inherit'
                         href={`mailto:${emailId}`} >
                         <EmailIcon />
                     </IconButton>
+                    <Divider />
+
                     <IconButton
                         color='inherit'
                         href={githubLink}>
                         <GitHubIcon />
                     </IconButton>
+                    <Divider />
+
                 </Stack >
             </SwipeableDrawer>
         </AppBar >
