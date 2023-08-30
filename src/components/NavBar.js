@@ -78,11 +78,11 @@ export const NavBar = () => {
                 anchor='right'
                 onOpen={() => { setDrawerOpen(true) }}
                 onClose={() => { setDrawerOpen(false) }}>
-                <duv>
+                <div>
                     <IconButton onClick={() => setDrawerOpen(false)}>
                         <ChevronRightIcon />
                     </IconButton>
-                </duv>
+                </div>
                 <Divider />
                 <Stack
                     spacing={2}

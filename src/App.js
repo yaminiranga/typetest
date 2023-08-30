@@ -23,12 +23,17 @@ function App() {
     <div className="App" style={{ marginBottom: '200px' }} >
       <NavBar></NavBar>
       <Timer isStart={isType && startbtn} ></Timer>
-      <Stack spacing={2} direction={'row'} justifyContent={'center'}>
+      <Stack
+        spacing={10}
+        justifyContent={'center'}
+        alignContent={'center'}
+        sx={{ py: 4 }}
+        direction={'row'}
+      >
         <TypingArea onFocus={startbtn} setIsTyping={setIsType}></TypingArea>
-        <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
       </Stack>
+      <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
       <Footer></Footer>
-
     </div >
   );
 }

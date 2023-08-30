@@ -1,14 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react'
+import rawTextFile from '../TextFiles/TextFileHere.txt';
 
 export const TypingArea = (props) => {
 
     const onFocus = props.onFocus
     const setIsTyping = props.setIsTyping
-    const textString = 'Type here you lil shee!!\0'.split('')
+    //  let textString = []//'Type here you lil shee!!\0'.split('')
+    const [textString, setTextString] = useState([]);
+
+    let initState = textString.map((c, i) => ({ color: 'black', letter: c, index: i }))
+
     const initIndex = 0
-    const initState = textString.map((c, i) => ({ color: 'black', letter: c, index: i }))
+
     const [content, setContent] = useState(initState);
     const [index, setIndex] = useState(initIndex);
+
+    useEffect(() => {
+        fetch(rawTextFile)
+            .then(response => {
+                return response.text()
+            }
+            )
+            .then(data => {
+                console.log("ddddd:", data)
+                const textData = (data + '\0').split('');
+                let initState = textData.map((c, i) => ({ color: 'black', letter: c, index: i }));
+                setContent(initState);
+                setTextString(textData)
+
+            })
+            .catch(error => console.error('Error fetching file:', error));
+
+        if (spanRef.current) {
+            spanRef.current.scrollTop = spanRef.current.scrollHeight;
+        }
+    }, [])
+
+    // textString = 'kdflskjflakdlfkshldif ksdhf kasdh;fkhas;dfh;sio\0'.split('')
+    // initState = textString.map((c, i) => ({ color: 'black', letter: c, index: i }))
+    // setContent(initState)
 
 
     const updateColorAtIndex = (index, color) => {
@@ -32,6 +62,10 @@ export const TypingArea = (props) => {
             console.log('Key pressed:', event.key);
             if (validKeys.has(event.key)) //((event.key >= 'A' && event.key <= 'Z') || (event.key >= 'a' && event.key <= 'z')) {
             {
+                if (event.key === ' ') {
+                    event.preventDefault()
+                    event.stopPropagation();
+                }
                 if (index < textString.length - 1) {
                     color = event.key === content[index].letter ? 'green' : 'red'
                     setIndex(index => index + 1)
@@ -39,17 +73,17 @@ export const TypingArea = (props) => {
                     console.log('index', index, 'pressedKey', event.key, 'content val', content[index].letter)
 
                 }
+
             } else if (event.key === 'Backspace') {
-                if (index > 0) {
+                if (index >= 0) {
                     setIndex(index => index - 1)
                     updateColorAtIndex(index - 1, 'black')
                     console.log('indexoo', index, 'pressedKeyoo', event.key, 'content valoo', content[index].letter)
-                    //     event.preventDefault()
                 }
             }
             setIsTyping(true)
 
-            if (index == textString.length - 2) {
+            if (index === textString.length - 2) {
                 setIsTyping(false)
             }
         }
@@ -68,8 +102,17 @@ export const TypingArea = (props) => {
     return (<>
         <span
             tabIndex={0}
+            justifyContent={'center'}
             onKeyDown={handleKeyDown}
             ref={spanRef}
+            style={{
+                display: 'block',
+                overflow: 'auto',
+                height: '20vh', // 100% of viewport height
+                width: '50vw',  // 100% of viewport width
+                padding: '10px', // Add padding for better appearance
+                fontSize: '40px',
+            }}
         >
             {content.map((s, i) => { return <span style={{ color: s.color }} key={i} >{s.letter}</span> })
             }
