@@ -5,6 +5,7 @@ export const TypingArea = (props) => {
 
     const onFocus = props.onFocus
     const setIsTyping = props.setIsTyping
+    const setKeyStrokes = props.setKeyStrokes
     //  let textString = []//'Type here you lil shee!!\0'.split('')
     const [textString, setTextString] = useState([]);
 
@@ -73,6 +74,7 @@ export const TypingArea = (props) => {
                     console.log('index', index, 'pressedKey', event.key, 'content val', content[index].letter)
 
                 }
+                setKeyStrokes(prev => prev + 1)
 
             } else if (event.key === 'Backspace') {
                 if (index >= 0) {
@@ -102,7 +104,6 @@ export const TypingArea = (props) => {
     return (<>
         <span
             tabIndex={0}
-            justifyContent={'center'}
             onKeyDown={handleKeyDown}
             ref={spanRef}
             style={{
@@ -112,12 +113,18 @@ export const TypingArea = (props) => {
                 width: '50vw',  // 100% of viewport width
                 padding: '10px', // Add padding for better appearance
                 fontSize: '40px',
+                border: '5px solid #1976d2',
+                borderColor: 'Highlight',
+                borderRadius: '10px',
+                outline: '1px solid #1976d2',
+                outlineOffset: '2px'
+
             }}
         >
             {content.map((s, i) => {
                 return <span style={{
                     color: s.color,
-                    backgroundColor: s.letter === ' ' && s.color ==='red'? 'red' : 'transparent'
+                    backgroundColor: s.letter === ' ' && s.color === 'red' ? 'red' : 'transparent'
                 }} key={i} >{s.letter}</span>
             })
             }

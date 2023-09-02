@@ -4,19 +4,35 @@ import { red } from '@mui/material/colors'
 
 export const Timer = (props) => {
     const startTimer = props.isStart
+
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
+    const [totalSecs, setTotalSecs] = useState(0)
     let interval = 0
     useEffect(() => {
         if (startTimer) {
+
             interval = setInterval(() => {
-                setSeconds(prev => prev + 1)
-                if (seconds === 59) {
-                    setMinutes(prev => prev + 1)
-                    setSeconds(0)
-                }
+                setTotalSecs(prev => prev + 1)
+                props.setTimeMinute((totalSecs + 1) / 60)
+
+                setSeconds(prev => {
+                    if (prev === 59) {
+                        setMinutes(prevMinutes => prevMinutes + 1)
+                        return 0;
+                    } else {
+                        return prev + 1;
+                    }
+                })
+                // if (seconds === 59) {
+                //     setMinutes(prev => prev + 1)
+                //     setSeconds(0)
+                // }
             }, 1000)
+
+
         }
+
         return () => clearInterval(interval)
     })
 
