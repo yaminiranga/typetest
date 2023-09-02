@@ -31,35 +31,44 @@ export const TypingSpeed = (props) => {
                 flex={1}
                 justifyContent={'center'}
             >
-                <span>
+                <span style={mySpanStyle}>
                     <Typography sx={{ color: 'primary.main' }}>STROKES</Typography>
-                    <span style={mySpanStyle} >
-                        {props.strokes}</span>
+                    <span  >
+                        {props.strokes}
+                    </span>
 
                 </span>
 
-                <span>
-                    <Typography sx={{ color: 'primary.main' }}>NetWPM</Typography>
-                    <span style={mySpanStyle}  >
-                        {netWPM.toFixed(2)}</span>
+                <span style={mySpanStyle}>
+                    <Typography sx={{ color: 'primary.main' }}>Net-WPM</Typography>
+                    <span   >
+                        {netWPM.toFixed(2)}
+                    </span>
                 </span>
 
-                <span>
+                <span style={mySpanStyle}>
+                    <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>Gross-WPM</Typography>
+                    <span >
+                        {grossWPM.toFixed(2)}
+                    </span>
+                </span>
+
+                <span style={mySpanStyle} >
                     <Typography sx={{ color: 'primary.main' }}>ACCURACY</Typography>
-                    <span style={mySpanStyle}  >
-                        {accuracy.toFixed(2)}</span>
+                    <span  >
+                        {accuracy.toFixed(2)}
+                    </span>
                 </span>
 
-                <span>
+                <span style={mySpanStyle}>
                     <Typography sx={{ color: 'primary.main' }}>WORDS</Typography>
-                    <span style={mySpanStyle}  >
-                        {totalWords}</span>
+                    <span  >
+                        {totalWords}
+                    </span>
                 </span>
-            </Stack>
 
-            <Typography sx={{ color: 'primary.main' }}>GrossWPM</Typography>
-            <span style={mySpanStyle} >
-                {grossWPM.toFixed(2)}</span>
+
+            </Stack>
 
         </div>
     )
