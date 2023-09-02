@@ -38,6 +38,8 @@ export const NavBar = () => {
                     <Typography
                         variant='h6'
                         component={'div'}
+                        fontSize={'30px'}
+                        fontWeight={'bold'}
                     >
                         TexTest
                     </Typography>

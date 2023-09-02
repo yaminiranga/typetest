@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Typography, Box, colors } from '@mui/material'
-import { red } from '@mui/material/colors'
+import { Box } from '@mui/material'
 
 export const Timer = (props) => {
     const startTimer = props.isStart
@@ -8,10 +7,11 @@ export const Timer = (props) => {
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
     const [totalSecs, setTotalSecs] = useState(0)
+
     let interval = 0
+
     useEffect(() => {
         if (startTimer) {
-
             interval = setInterval(() => {
                 setTotalSecs(prev => prev + 1)
                 props.setTimeMinute((totalSecs + 1) / 60)
@@ -24,17 +24,10 @@ export const Timer = (props) => {
                         return prev + 1;
                     }
                 })
-                // if (seconds === 59) {
-                //     setMinutes(prev => prev + 1)
-                //     setSeconds(0)
-                // }
             }, 1000)
-
-
         }
-
         return () => clearInterval(interval)
-    })
+    }, [startTimer])
 
     // const resetButton = () => {
     //     setMinutes(0)
