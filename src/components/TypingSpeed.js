@@ -46,9 +46,14 @@ export const TypingSpeed = (props) => {
                     </span>
                 </span>
 
-                <span style={mySpanStyle}>
+                <span style={{
+                    ...mySpanStyle,
+                    border: '5px solid highlight',
+                    outline: '2px solid',
+                    outlineOffset: '2px'
+                }} >
                     <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>Gross-WPM</Typography>
-                    <span >
+                    <span style={{ fontSize: '25px' }}>
                         {grossWPM.toFixed(2)}
                     </span>
                 </span>
@@ -70,6 +75,6 @@ export const TypingSpeed = (props) => {
 
             </Stack>
 
-        </div>
+        </div >
     )
 }
