@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Typography, Box, colors } from '@mui/material'
+import { red } from '@mui/material/colors'
 
 export const Timer = (props) => {
     const startTimer = props.isStart
@@ -22,16 +24,33 @@ export const Timer = (props) => {
     //     setMinutes(0)
     //     setSeconds(0)
     // }
+    const boldBorderStyle = {
+        border: '5px solid',
+        borderColor: 'highlight',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#1976d2', // Background color
+
+    };
 
     return (
-        <div>Timer
+        <div >
             <br></br>
-            <span className='timer timer--minutes'>{minutes < 10 ? '0' + minutes : minutes}</span>
-            <span className='timer'>:</span>
-            <span className='timer timer--seconds'>{seconds < 10 ? '0' + seconds : seconds}</span>
-            {// <button onClick={toggleButton}>{button ? 'Stop' : 'Start'}</button>
-                // <button onClick={resetButton}>Reset</button>
-            }
+            <Box
+                style={boldBorderStyle}
+                component="div"
+                fontWeight={'bold'}
+                color={'White'}
+                fontSize={'30px'}
+                sx={{
+                    visibility: 'visible',
+                    border: 1,
+                    borderRadius: '40px',
+                    display: 'inline-flex',
+                    p: 1,
+                }}>
+                {minutes < 10 ? '0' + minutes : minutes} : {seconds < 10 ? '0' + seconds : seconds}
+            </Box>
         </div >
     )
 }

@@ -25,6 +25,12 @@ export const StartButton = (props) => {
             size='small'
             color={btnAttributes.btnColor}
             onClick={toggleButton}
+            sx={{
+                borderRadius: '30px',
+                fontSize: '25px',
+                border: `5px solid`,
+                borderColor: 'Highlight'
+            }}
         >
             {btnAttributes.btnText}
         </Button>

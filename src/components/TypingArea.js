@@ -114,10 +114,17 @@ export const TypingArea = (props) => {
                 fontSize: '40px',
             }}
         >
-            {content.map((s, i) => { return <span style={{ color: s.color }} key={i} >{s.letter}</span> })
+            {content.map((s, i) => {
+                return <span style={{
+                    color: s.color,
+                    backgroundColor: s.letter === ' ' && s.color ==='red'? 'red' : 'transparent'
+                }} key={i} >{s.letter}</span>
+            })
             }
         </span >
 
     </>
     );
 };
+
+
