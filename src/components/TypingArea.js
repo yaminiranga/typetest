@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import rawTextFile from '../TextFiles/TextFileHere.txt';
+// import rawTextFile from '../TextFiles/TextFileHere.txt';
+import rawTextFile from '../TextFiles/TextFile0.txt';
 
 export const TypingArea = (props) => {
 
@@ -7,6 +8,7 @@ export const TypingArea = (props) => {
     const setIsTyping = props.setIsTyping
     const setKeyStrokes = props.setKeyStrokes
     const setCorrectStrokes = props.setCorrectStrokes
+    const setToggleStartBtn = props.setToggleStartBtn
     //  let textString = []//'Type here you lil shee!!\0'.split('')
     const [textString, setTextString] = useState([]);
 
@@ -74,11 +76,11 @@ export const TypingArea = (props) => {
                     updateColorAtIndex(index, color)
                     setCorrectStrokes(prev => color === 'green' ? prev + 1 : prev)
                     console.log('index', index, 'pressedKey', event.key, 'content val', content[index].letter)
+                    setKeyStrokes(prev => prev + 1)
                 }
-                setKeyStrokes(prev => prev + 1)
 
             } else if (event.key === 'Backspace') {
-                if (index >= 0) {
+                if (index > 0) {
                     setIndex(index => index - 1)
                     updateColorAtIndex(index - 1, 'black')
                     setCorrectStrokes(prev => content[index - 1].color === 'green' ? prev - 1 : prev)
@@ -86,11 +88,12 @@ export const TypingArea = (props) => {
                 }
             }
             setIsTyping(true)
-
-            if (index === textString.length - 2) {
+            if (index + 1 >= textString.length - 1) {
                 setIsTyping(false)
+                setToggleStartBtn()
             }
         }
+
     };
     const [isEditable, setIsEditable] = useState(false)
     const spanRef = useRef(null)

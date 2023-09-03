@@ -42,7 +42,7 @@ function App() {
         sx={{ py: 4 }}
         direction={'row'}
       >
-        <TypingArea onFocus={startbtn} setIsTyping={setIsType} setKeyStrokes={setKeyStrokes} setCorrectStrokes={setCorrectStrokes}></TypingArea>
+        <TypingArea setToggleStartBtn={toggleStartBtn} onFocus={startbtn} setIsTyping={setIsType} setKeyStrokes={setKeyStrokes} setCorrectStrokes={setCorrectStrokes}></TypingArea>
       </Stack>
       <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
       <Footer></Footer>
