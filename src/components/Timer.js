@@ -3,6 +3,7 @@ import { Box } from '@mui/material'
 
 export const Timer = (props) => {
     const startTimer = props.isStart
+    const setTimeMinute = props.setTimeMinute
 
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
@@ -14,8 +15,7 @@ export const Timer = (props) => {
         if (startTimer) {
             interval = setInterval(() => {
                 setTotalSecs(prev => prev + 1)
-                props.setTimeMinute((totalSecs + 1) / 60)
-
+                setTimeMinute((totalSecs + 1) / 60)
                 setSeconds(prev => {
                     if (prev === 59) {
                         setMinutes(prevMinutes => prevMinutes + 1)
@@ -27,7 +27,7 @@ export const Timer = (props) => {
             }, 1000)
         }
         return () => clearInterval(interval)
-    }, [startTimer])
+    }, [startTimer, totalSecs])
 
     // const resetButton = () => {
     //     setMinutes(0)

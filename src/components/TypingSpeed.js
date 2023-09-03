@@ -3,8 +3,10 @@ import { Button, Stack, Typography } from '@mui/material'
 
 
 export const TypingSpeed = (props) => {
-    const totalWords = props.strokes ? props.strokes / 5 : 0
-    const correcttWords = 1000;
+
+    const wordLength = 5
+    const totalWords = props.strokes ? props.strokes / wordLength : 0
+    const correcttWords = props.correctStrokes / wordLength;
     const timeMinute = props.timeMinute;
 
     const grossWPM = totalWords && timeMinute ? (totalWords / timeMinute) : 0
@@ -23,8 +25,6 @@ export const TypingSpeed = (props) => {
     }
     return (
         <div>
-            {//timeMinute
-            }
             <Stack
                 direction={'row'}
                 spacing={'20px'}
@@ -38,7 +38,6 @@ export const TypingSpeed = (props) => {
                     <span  >
                         {props.strokes}
                     </span>
-
                 </span>
 
                 <span style={mySpanStyle}>
@@ -63,7 +62,7 @@ export const TypingSpeed = (props) => {
                 <span style={mySpanStyle} >
                     <Typography sx={{ color: 'primary.main' }}>ACCURACY</Typography>
                     <span  >
-                        {accuracy.toFixed(2)}
+                        {accuracy.toFixed(2)}%
                     </span>
                 </span>
 

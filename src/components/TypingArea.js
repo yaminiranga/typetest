@@ -6,6 +6,7 @@ export const TypingArea = (props) => {
     const onFocus = props.onFocus
     const setIsTyping = props.setIsTyping
     const setKeyStrokes = props.setKeyStrokes
+    const setCorrectStrokes = props.setCorrectStrokes
     //  let textString = []//'Type here you lil shee!!\0'.split('')
     const [textString, setTextString] = useState([]);
 
@@ -71,8 +72,8 @@ export const TypingArea = (props) => {
                     color = event.key === content[index].letter ? 'green' : 'red'
                     setIndex(index => index + 1)
                     updateColorAtIndex(index, color)
+                    setCorrectStrokes(prev => color === 'green' ? prev + 1 : prev)
                     console.log('index', index, 'pressedKey', event.key, 'content val', content[index].letter)
-
                 }
                 setKeyStrokes(prev => prev + 1)
 
@@ -80,6 +81,7 @@ export const TypingArea = (props) => {
                 if (index >= 0) {
                     setIndex(index => index - 1)
                     updateColorAtIndex(index - 1, 'black')
+                    setCorrectStrokes(prev => content[index - 1].color === 'green' ? prev - 1 : prev)
                     console.log('indexoo', index, 'pressedKeyoo', event.key, 'content valoo', content[index].letter)
                 }
             }
