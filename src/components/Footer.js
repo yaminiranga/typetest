@@ -18,7 +18,7 @@ export const Footer = () => {
                     alignItems="center"
                     justifyContent="center"
                     backgroundColor='#1976d2'
-                    sx={{ py: 4 }}>
+                    sx={{ py: 1 }}>
                     <Typography
                         variant="body2"
                         color="textSecondary">

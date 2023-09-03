@@ -18,7 +18,8 @@ export const TypingSpeed = (props) => {
         fontWeight: 'bold',
         border: '2px solid highlight',
         borderRadius: '5px',
-        paddingInline: 10
+        paddingInline: 10,
+        marginBottom: '10px'
     }
     return (
         <div>
@@ -29,6 +30,7 @@ export const TypingSpeed = (props) => {
                 spacing={'20px'}
                 padding={'20px'}
                 flex={1}
+                flexWrap={'wrap'}
                 justifyContent={'center'}
             >
                 <span style={mySpanStyle}>

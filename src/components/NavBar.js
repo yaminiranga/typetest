@@ -22,7 +22,7 @@ export const NavBar = () => {
     const linkedinLink = "https://in.linkedin.com/"
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
-        <AppBar position='static'
+        <AppBar position='static' // Prevent the AppBar from shrinking in width
         >
             <Toolbar
                 sx={{
