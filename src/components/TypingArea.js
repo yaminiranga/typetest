@@ -113,10 +113,9 @@ export const TypingArea = (props) => {
                 width: '50vw',  // 100% of viewport width
                 padding: '10px', // Add padding for better appearance
                 fontSize: '40px',
-                border: '5px solid #1976d2',
-                borderColor: 'Highlight',
+                border: '5px solid Highlight',
                 borderRadius: '10px',
-                outline: '1px solid #1976d2',
+                outline: '2px solid #1976d2',
                 outlineOffset: '2px'
 
             }}
