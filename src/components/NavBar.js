@@ -18,7 +18,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export const NavBar = () => {
     const emailId = "yaministartlight@gmail.com"
-    const githubLink = "https://github.com/"
+    const githubLink = "https://github.com/yaminiranga"
     const linkedinLink = "https://in.linkedin.com/"
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
