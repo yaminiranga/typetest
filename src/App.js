@@ -16,6 +16,7 @@ function App() {
   const [keyStrokes, setKeyStrokes] = useState(0)
   const [timeMinute, setTimeMinute] = useState(0)
   const [correctStrokes, setCorrectStrokes] = useState(0)
+  const [words, setWords] = useState(0)
   const [isType, setIsType] = useState(false)
 
 
@@ -33,6 +34,7 @@ function App() {
         strokes={keyStrokes}
         timeMinute={timeMinute}
         correctStrokes={correctStrokes}
+        words={words}
       ></TypingSpeed>
 
       <Stack
@@ -42,7 +44,7 @@ function App() {
         sx={{ py: 4 }}
         direction={'row'}
       >
-        <TypingArea setToggleStartBtn={toggleStartBtn} onFocus={startbtn} setIsTyping={setIsType} setKeyStrokes={setKeyStrokes} setCorrectStrokes={setCorrectStrokes}></TypingArea>
+        <TypingArea setToggleStartBtn={toggleStartBtn} onFocus={startbtn} setIsTyping={setIsType} setKeyStrokes={setKeyStrokes} setCorrectStrokes={setCorrectStrokes} setWords={setWords}></TypingArea>
       </Stack>
       <StartButton toggle={toggleStartBtn} isStartBtn={startbtn}></StartButton>
       <Footer></Footer>

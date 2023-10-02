@@ -5,8 +5,9 @@ import { Button, Stack, Typography } from '@mui/material'
 export const TypingSpeed = (props) => {
 
     const wordLength = 5
-    const totalWords = props.strokes ? props.strokes / wordLength : 0
+    //  const totalWords = props.strokes ? props.strokes / wordLength : 0
     const correcttWords = props.correctStrokes / wordLength;
+    const totalWords = props.words ? props.words / wordLength : 0;
     const timeMinute = props.timeMinute;
 
     const grossWPM = totalWords && timeMinute ? (totalWords / timeMinute) : 0

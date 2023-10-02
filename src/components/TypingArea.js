@@ -7,6 +7,7 @@ export const TypingArea = (props) => {
     const onFocus = props.onFocus
     const setIsTyping = props.setIsTyping
     const setKeyStrokes = props.setKeyStrokes
+    const setWords = props.setWords
     const setCorrectStrokes = props.setCorrectStrokes
     const setToggleStartBtn = props.setToggleStartBtn
     //  let textString = []//'Type here you lil shee!!\0'.split('')
@@ -62,6 +63,7 @@ export const TypingArea = (props) => {
 
 
     const handleKeyDown = event => {
+
         if (isEditable) {
             console.log('Key pressed:', event.key);
             if (validKeys.has(event.key)) //((event.key >= 'A' && event.key <= 'Z') || (event.key >= 'a' && event.key <= 'z')) {
@@ -73,6 +75,8 @@ export const TypingArea = (props) => {
                 if (index < textString.length - 1) {
                     color = event.key === content[index].letter ? 'green' : 'red'
                     setIndex(index => index + 1)
+                    setWords(words => index + 1)
+
                     updateColorAtIndex(index, color)
                     setCorrectStrokes(prev => color === 'green' ? prev + 1 : prev)
                     console.log('index', index, 'pressedKey', event.key, 'content val', content[index].letter)
@@ -82,6 +86,8 @@ export const TypingArea = (props) => {
             } else if (event.key === 'Backspace') {
                 if (index > 0) {
                     setIndex(index => index - 1)
+                    setWords(words => index - 1)
+
                     updateColorAtIndex(index - 1, 'black')
                     setCorrectStrokes(prev => content[index - 1].color === 'green' ? prev - 1 : prev)
                     console.log('indexoo', index, 'pressedKeyoo', event.key, 'content valoo', content[index].letter)
